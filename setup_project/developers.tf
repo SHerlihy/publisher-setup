@@ -11,7 +11,7 @@ resource "aws_iam_access_key" "developers" {
 }
 
 locals {
-  usernames_to_access_key = { for access_key in aws_iam_access_key.developers : access_key.user.name => { key_id : access_key.id, key_secret : access_key.secret } }
+  usernames_to_access_key = { for access_key in aws_iam_access_key.developers : access_key.user => { key_id : access_key.id, key_secret : access_key.secret } }
 }
 
 data "aws_iam_policy_document" "s3_path_developer_user" {
@@ -68,4 +68,5 @@ resource "aws_s3_bucket_policy" "s3_path_developer_users" {
 
 output "usernames_to_access_key" {
   value = local.usernames_to_access_key
+  sensitive = true
 }

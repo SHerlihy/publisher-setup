@@ -4,5 +4,5 @@ locals {
     facet      = "admin"
   }
 
-  usernames = ["steve"]
+  usernames = toset(["steve"])
 }

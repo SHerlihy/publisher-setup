@@ -56,6 +56,6 @@ resource "aws_iam_user_policy" "test_api_gateway_assume_role" {
   })
 }
 
-output "test_api_gateway_role_arn" {
+output "test_role_arn" {
   value = aws_iam_role.test_api_gateway.arn
 }
