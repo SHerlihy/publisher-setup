@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 1.0, < 2.0"
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = ">= 6.0, < 7.0"
     }
   }
@@ -10,13 +10,13 @@ terraform {
 
 provider "aws" {
   profile = "publisher_admin"
-  region = "eu-west-2"
+  region  = "eu-west-2"
 }
 
 locals {
   common_tags = {
     product_id = "quota endpoint"
-    facet = "admin"
+    facet      = "admin"
   }
 }
 
@@ -30,6 +30,6 @@ resource "aws_s3_bucket" "backend" {
   }
 }
 
-output "name" {
-  value = aws_s3_bucket.backend.name
+output "id" {
+  value = aws_s3_bucket.backend.id
 }
