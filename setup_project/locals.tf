@@ -4,5 +4,5 @@ locals {
     facet      = "admin"
   }
 
-  usernames = toset([for developer in yamldecode(file("${path.module}/developers.yaml")).developers : developer.username])
+  usernames = ["steve"]
 }
