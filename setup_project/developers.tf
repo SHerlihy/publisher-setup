@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "s3_path_developer_user" {
     ]
 
     condition {
-      test     = "StringEquals"
+      test     = "StringLike"
       variable = "s3:prefix"
       values   = ["${each.value.name}/", "${each.value.name}/*"]
     }

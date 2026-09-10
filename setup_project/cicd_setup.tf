@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "s3_all_cicd_user" {
     ]
 
     condition {
-      test     = "StringEquals"
+      test     = "StringLike"
       variable = "s3:prefix"
       values   = ["cicd/", "cicd/*"]
     }
@@ -50,11 +50,6 @@ data "aws_iam_policy_document" "s3_all_cicd_user" {
       "${aws_s3_bucket.backend.arn}/cicd/*",
     ]
   }
-}
-
-resource "aws_s3_bucket_policy" "s3_all_cicd_user" {
-  bucket = aws_s3_bucket.backend.id
-  policy = data.aws_iam_policy_document.s3_all_cicd_user.json
 }
 
 output "cicd_access_key_id" {
