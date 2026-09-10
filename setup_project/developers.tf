@@ -60,13 +60,11 @@ data "aws_iam_policy_document" "s3_path_developer_user" {
   }
 }
 
-resource "aws_s3_bucket_policy" "s3_path_developer_users" {
-  for_each = data.aws_iam_policy_document.s3_path_developer_user
-  bucket   = aws_s3_bucket.backend.id
-  policy   = each.value.json
+locals {
+  dev_policies_json = [ for s3_dev_policy in data.aws_iam_policy_document.s3_path_developer_user : s3_dev_policy.json ]
 }
 
 output "usernames_to_access_key" {
-  value = local.usernames_to_access_key
+  value     = local.usernames_to_access_key
   sensitive = true
 }

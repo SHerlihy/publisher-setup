@@ -8,7 +8,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket  = "publisher-setup-c65056444609bf217224d69a1f"
+    bucket  = "publisher-setup-3b34e62ca5e651b4574b4ed3c4"
     key     = "setup_project/terraform.tfstate"
     profile = "publisher_admin"
     region  = "eu-west-2"
